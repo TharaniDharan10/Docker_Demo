@@ -20,9 +20,9 @@ public class DemoController {
         return "I love you SweetHeart";
     }
 
-    @GetMapping("/love")
-    public String love() {
-        return "I love you";
+    @GetMapping("hi")
+    public String hi() {
+        return "Hi";
     }
 
     @PostMapping("/submit")
