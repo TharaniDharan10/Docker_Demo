@@ -25,6 +25,12 @@ public class DemoController {
         return "Hi";
     }
 
+    @GetMapping("hey")
+    public String hey() {
+        return "Hey";
+    }
+
+
     @PostMapping("/submit")
     public String submitData(@RequestBody DataRequest request) {
         return "Received: " + request.getData();

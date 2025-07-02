@@ -33,7 +33,9 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/docker-demo:latest --push .
+          docker buildx build --platform linux/amd64 \
+            -t ${{ secrets.DOCKER_USERNAME }}/docker-demo:latest \
+            --push .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -45,5 +47,8 @@ jobs:
       - name: Update kubeconfig for EKS
         run: aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to EKS
+      - name: Apply Kubernetes manifests
         run: kubectl apply -f k8s-deployment.yaml
+
+      - name: Force restart Deployment (to use new image)
+        run: kubectl rollout restart deployment docker-k8s-demo-deployment
