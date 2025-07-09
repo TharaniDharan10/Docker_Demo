@@ -20,14 +20,19 @@ public class DemoController {
         return "I love you SweetHeart";
     }
 
-    @GetMapping("hi")
+    @GetMapping("/hi")
     public String hi() {
         return "Hi";
     }
 
-    @GetMapping("hey")
+    @GetMapping("/hey")
     public String hey() {
         return "Hey";
+    }
+
+    @GetMapping("/class")
+    public String hiclass() {
+        return "Hi class";
     }
 
 
