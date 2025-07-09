@@ -1,4 +1,3 @@
-
 # Use a lightweight JDK base image
 FROM openjdk:21-slim
 
